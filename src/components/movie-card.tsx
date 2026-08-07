@@ -12,9 +12,9 @@ export function MovieCard({ movie }: { movie: Movie }) {
   return (
     <Link
       href={`/movie/${movie.id}`}
-      className="group block transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.08]"
+      className="group block transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.06] active:scale-[0.98]"
     >
-      <div className="overflow-hidden rounded-md border border-transparent bg-card shadow-md transition-colors group-hover:border-white/15 group-hover:shadow-xl group-hover:shadow-black/60">
+      <div className="overflow-hidden rounded-md border border-transparent bg-card shadow-md transition-colors duration-300 group-hover:border-white/15 group-hover:shadow-xl group-hover:shadow-black/60">
         <div className="relative aspect-2/3 w-full overflow-hidden bg-muted">
           {poster ? (
             <Image
@@ -22,7 +22,7 @@ export function MovieCard({ movie }: { movie: Movie }) {
               alt={movie.title}
               fill
               sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 45vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-center text-xs text-muted-foreground p-2">

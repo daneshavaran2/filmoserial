@@ -88,7 +88,7 @@ export default async function MovieDetailsPage({
             )}
           </div>
 
-          <div className="flex flex-1 flex-col gap-3 text-center sm:pt-8 sm:text-right">
+          <div className="flex flex-1 flex-col gap-3 text-center motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 fill-mode-both sm:pt-8 sm:text-right">
             <h1 className="text-2xl font-bold sm:text-3xl">{movie.title}</h1>
             {movie.tagline && (
               <p className="text-sm italic text-muted-foreground">

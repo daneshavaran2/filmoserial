@@ -15,7 +15,7 @@ export function GenreNav({
       <Link
         href="/genre/popular"
         className={cn(
-          "shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
+          "shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all duration-150 hover:scale-105 active:scale-95",
           !activeGenreId
             ? "border-primary bg-primary text-primary-foreground"
             : "border-input bg-background hover:bg-accent hover:text-accent-foreground"
@@ -28,7 +28,7 @@ export function GenreNav({
           key={genre.id}
           href={`/genre/${genre.id}`}
           className={cn(
-            "shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
+            "shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all duration-150 hover:scale-105 active:scale-95",
             activeGenreId === genre.id
               ? "border-primary bg-primary text-primary-foreground"
               : "border-input bg-background hover:bg-accent hover:text-accent-foreground"

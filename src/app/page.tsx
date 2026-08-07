@@ -55,7 +55,7 @@ export default async function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover motion-safe:animate-in motion-safe:zoom-in-95 duration-[3000ms] ease-out fill-mode-both"
           />
         ) : (
           <div className="h-full w-full bg-muted" />
@@ -65,20 +65,20 @@ export default async function HomePage() {
 
         {featured && (
           <div className="relative flex h-full max-w-7xl flex-col justify-end gap-4 px-4 pb-10 sm:px-8 sm:pb-16">
-            <h1 className="max-w-xl text-3xl font-black drop-shadow-md sm:text-5xl">
+            <h1 className="max-w-xl text-3xl font-black drop-shadow-md motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-6 duration-700 fill-mode-both sm:text-5xl">
               {featured.title}
             </h1>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground sm:text-base">
+            <div className="flex items-center gap-3 text-sm text-muted-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 delay-150 fill-mode-both sm:text-base">
               <span className="flex items-center gap-1 font-semibold text-foreground">
                 <Star className="size-4 fill-yellow-400 text-yellow-400" />
                 {formatRating(featured.vote_average)}
               </span>
               <span>{formatJalaliYear(featured.release_date)}</span>
             </div>
-            <p className="line-clamp-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+            <p className="line-clamp-3 max-w-xl text-sm text-muted-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 delay-300 fill-mode-both sm:text-base">
               {featured.overview}
             </p>
-            <div>
+            <div className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 delay-500 fill-mode-both">
               <Button asChild size="lg" className="gap-2 font-bold">
                 <Link href={`/movie/${featured.id}`}>
                   <Info className="size-5" />
@@ -102,6 +102,7 @@ export default async function HomePage() {
             title={genre.name}
             movies={rows[i].results}
             seeAllHref={`/genre/${genre.id}`}
+            delayMs={Math.min((i + 1) * 80, 400)}
           />
         ))}
       </div>
