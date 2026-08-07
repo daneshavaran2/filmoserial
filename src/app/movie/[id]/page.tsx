@@ -3,7 +3,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Star, Clock, CalendarDays, Film } from "lucide-react";
 
-import { getMovieDetails, posterUrl, backdropUrl } from "@/lib/tmdb";
+import { getMovieDetails } from "@/lib/tmdb";
+import { posterUrl, backdropUrl } from "@/lib/tmdb-image";
 import {
   formatRating,
   formatJalaliDate,
@@ -69,7 +70,7 @@ export default async function MovieDetailsPage({
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10" />
       </section>
 
-      <div className="relative mx-auto -mt-24 max-w-6xl px-4 pb-12 sm:-mt-32">
+      <div className="relative mx-auto -mt-24 max-w-7xl px-4 pb-12 sm:-mt-32 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row">
           <div className="relative mx-auto h-64 w-44 shrink-0 overflow-hidden rounded-xl border bg-muted shadow-lg sm:mx-0 sm:h-72 sm:w-48">
             {poster ? (

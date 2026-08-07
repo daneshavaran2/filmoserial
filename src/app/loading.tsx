@@ -2,17 +2,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-6">
-      <Skeleton className="mb-8 h-56 w-full rounded-xl sm:h-72" />
-      <Skeleton className="mb-4 h-6 w-40" />
-      <div className="mb-6 flex gap-2 overflow-hidden">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} className="h-9 w-24 shrink-0 rounded-full" />
-        ))}
-      </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <Skeleton key={i} className="aspect-2/3 w-full rounded-xl" />
+    <div className="pb-12">
+      <Skeleton className="h-[56vw] max-h-[640px] min-h-[380px] w-full rounded-none sm:h-[48vw]" />
+      <div className="flex flex-col gap-8 pt-6 sm:gap-10">
+        {Array.from({ length: 4 }).map((_, row) => (
+          <div key={row} className="flex flex-col gap-2 px-4 sm:px-8">
+            <Skeleton className="h-5 w-32" />
+            <div className="flex gap-2.5">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <Skeleton
+                  key={i}
+                  className="aspect-2/3 w-32 shrink-0 rounded-md sm:w-40 md:w-44"
+                />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </div>

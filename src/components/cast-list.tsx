@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { User } from "lucide-react";
 
-import { profileUrl } from "@/lib/tmdb";
+import { profileUrl } from "@/lib/tmdb-image";
 import type { CastMember } from "@/lib/tmdb-types";
 
 export function CastList({ cast }: { cast: CastMember[] }) {

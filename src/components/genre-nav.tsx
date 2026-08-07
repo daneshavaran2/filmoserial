@@ -13,7 +13,7 @@ export function GenreNav({
   return (
     <nav className="scrollbar-none -mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
       <Link
-        href="/"
+        href="/genre/popular"
         className={cn(
           "shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
           !activeGenreId
@@ -26,7 +26,7 @@ export function GenreNav({
       {genres.map((genre) => (
         <Link
           key={genre.id}
-          href={`/?genre=${genre.id}`}
+          href={`/genre/${genre.id}`}
           className={cn(
             "shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
             activeGenreId === genre.id

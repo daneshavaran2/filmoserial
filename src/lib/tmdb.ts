@@ -10,8 +10,6 @@ import type {
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const READ_ACCESS_TOKEN = process.env.TMDB_API_READ_ACCESS_TOKEN;
 
-export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
-
 const REVALIDATE_SECONDS = 60 * 60;
 
 async function tmdbFetch<T>(
@@ -43,30 +41,6 @@ async function tmdbFetch<T>(
   }
 
   return res.json() as Promise<T>;
-}
-
-export function posterUrl(
-  path: string | null,
-  size: "w185" | "w342" | "w500" | "original" = "w342"
-) {
-  if (!path) return null;
-  return `${TMDB_IMAGE_BASE_URL}/${size}${path}`;
-}
-
-export function backdropUrl(
-  path: string | null,
-  size: "w780" | "w1280" | "original" = "w1280"
-) {
-  if (!path) return null;
-  return `${TMDB_IMAGE_BASE_URL}/${size}${path}`;
-}
-
-export function profileUrl(
-  path: string | null,
-  size: "w185" | "h632" = "w185"
-) {
-  if (!path) return null;
-  return `${TMDB_IMAGE_BASE_URL}/${size}${path}`;
 }
 
 export async function getMovieGenres(): Promise<Genre[]> {
