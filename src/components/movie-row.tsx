@@ -11,12 +11,10 @@ export function MovieRow({
   title,
   movies,
   seeAllHref,
-  delayMs = 0,
 }: {
   title: string;
   movies: Movie[];
   seeAllHref?: string;
-  delayMs?: number;
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -29,16 +27,13 @@ export function MovieRow({
   if (movies.length === 0) return null;
 
   return (
-    <section
-      className="group/row relative motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 fill-mode-both"
-      style={{ animationDelay: `${delayMs}ms` }}
-    >
-      <div className="mb-2 flex items-center justify-between px-4 sm:px-8">
+    <section className="group/row relative">
+      <div className="mb-3 flex items-center justify-between px-4 sm:px-8">
         <h2 className="text-base font-bold sm:text-lg">{title}</h2>
         {seeAllHref && (
           <Link
             href={seeAllHref}
-            className="text-xs font-medium text-muted-foreground transition-colors hover:text-primary"
+            className="rounded-sm text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-2 focus-visible:outline-ring"
           >
             مشاهده همه
           </Link>
@@ -50,7 +45,7 @@ export function MovieRow({
           type="button"
           aria-label="قبلی"
           onClick={() => scrollByAmount(1)}
-          className="absolute inset-y-0 right-0 z-10 hidden w-10 items-center justify-center bg-gradient-to-l from-background/90 to-transparent opacity-0 transition-opacity group-hover/row:opacity-100 hover:[&_svg]:scale-125 sm:flex"
+          className="absolute inset-y-0 right-0 z-10 hidden w-10 items-center justify-center bg-gradient-to-l from-background/90 to-transparent opacity-0 transition-opacity group-hover/row:opacity-100 hover:[&_svg]:scale-125 focus-visible:opacity-100 focus-visible:outline-none sm:flex"
         >
           <ChevronRight className="size-7 transition-transform duration-200" />
         </button>
@@ -70,7 +65,7 @@ export function MovieRow({
           type="button"
           aria-label="بعدی"
           onClick={() => scrollByAmount(-1)}
-          className="absolute inset-y-0 left-0 z-10 hidden w-10 items-center justify-center bg-gradient-to-r from-background/90 to-transparent opacity-0 transition-opacity group-hover/row:opacity-100 hover:[&_svg]:scale-125 sm:flex"
+          className="absolute inset-y-0 left-0 z-10 hidden w-10 items-center justify-center bg-gradient-to-r from-background/90 to-transparent opacity-0 transition-opacity group-hover/row:opacity-100 hover:[&_svg]:scale-125 focus-visible:opacity-100 focus-visible:outline-none sm:flex"
         >
           <ChevronLeft className="size-7 transition-transform duration-200" />
         </button>

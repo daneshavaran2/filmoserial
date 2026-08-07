@@ -7,7 +7,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-black tracking-tight text-primary"
+          className="flex items-center gap-2 rounded-sm text-xl font-black text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <Clapperboard className="size-7" />
           <span>فیلم‌بین</span>

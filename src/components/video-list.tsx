@@ -26,7 +26,7 @@ export function VideoList({ videos }: { videos: VideoItem[] }) {
             href={`https://www.youtube.com/watch?v=${video.key}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 rounded-lg border p-2 transition-colors hover:bg-accent"
+            className="group flex items-center gap-3 rounded-lg border p-2 transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <div className="relative h-16 w-28 shrink-0 overflow-hidden rounded-md bg-muted">
               <Image
@@ -36,7 +36,7 @@ export function VideoList({ videos }: { videos: VideoItem[] }) {
                 sizes="112px"
                 className="object-cover"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
                 <Play className="size-6 fill-white text-white" />
               </div>
             </div>

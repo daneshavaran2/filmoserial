@@ -88,8 +88,10 @@ export default async function MovieDetailsPage({
             )}
           </div>
 
-          <div className="flex flex-1 flex-col gap-3 text-center motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 fill-mode-both sm:pt-8 sm:text-right">
-            <h1 className="text-2xl font-bold sm:text-3xl">{movie.title}</h1>
+          <div className="flex flex-1 flex-col gap-3 text-center motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 ease-out fill-mode-both sm:pt-8 sm:text-right">
+            <h1 className="text-balance text-2xl font-bold sm:text-3xl">
+              {movie.title}
+            </h1>
             {movie.tagline && (
               <p className="text-sm italic text-muted-foreground">
                 {movie.tagline}
@@ -127,7 +129,7 @@ export default async function MovieDetailsPage({
         <div className="mt-10 flex flex-col gap-10">
           <section>
             <h2 className="mb-3 text-lg font-bold">خلاصه داستان</h2>
-            <p className="leading-8 text-muted-foreground">
+            <p className="max-w-3xl leading-8 text-muted-foreground">
               {movie.overview || "خلاصه‌ای برای این فیلم ثبت نشده است."}
             </p>
           </section>
