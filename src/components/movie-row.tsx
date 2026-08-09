@@ -6,15 +6,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import type { Movie } from "@/lib/tmdb-types";
 import { MovieCard } from "@/components/movie-card";
+import { toPersianDigits } from "@/lib/format";
 
 export function MovieRow({
   title,
   movies,
   seeAllHref,
+  ranked = false,
 }: {
   title: string;
   movies: Movie[];
   seeAllHref?: string;
+  ranked?: boolean;
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -54,11 +57,25 @@ export function MovieRow({
           ref={scrollerRef}
           className="scrollbar-none flex gap-2.5 overflow-x-auto scroll-smooth px-4 sm:px-8"
         >
-          {movies.map((movie) => (
-            <div key={movie.id} className="w-32 shrink-0 sm:w-40 md:w-44">
-              <MovieCard movie={movie} />
-            </div>
-          ))}
+          {movies.map((movie, i) =>
+            ranked && i < 10 ? (
+              <div key={movie.id} className="flex shrink-0 items-end">
+                <span
+                  aria-hidden
+                  className="select-none pb-1 text-[5rem] leading-none font-black text-transparent [-webkit-text-stroke:2px_var(--muted-foreground)] sm:text-[6.5rem]"
+                >
+                  {toPersianDigits(i + 1)}
+                </span>
+                <div className="mr-[-0.5rem] w-28 shrink-0 sm:mr-[-0.75rem] sm:w-36 md:w-40">
+                  <MovieCard movie={movie} />
+                </div>
+              </div>
+            ) : (
+              <div key={movie.id} className="w-32 shrink-0 sm:w-40 md:w-44">
+                <MovieCard movie={movie} />
+              </div>
+            )
+          )}
         </div>
 
         <button

@@ -44,6 +44,9 @@ export default async function HomePage() {
 
   const featured = popular.results[0];
   const featuredBackdrop = featured ? backdropUrl(featured.backdrop_path) : null;
+  const featuredGenres = featured
+    ? genres.filter((g) => featured.genre_ids.includes(g.id)).slice(0, 3)
+    : [];
 
   return (
     <div className="pb-12">
@@ -68,12 +71,20 @@ export default async function HomePage() {
             <h1 className="max-w-xl text-balance text-3xl font-black drop-shadow-md motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-6 duration-700 ease-out fill-mode-both sm:text-5xl">
               {featured.title}
             </h1>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 delay-150 ease-out fill-mode-both sm:text-base">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 delay-150 ease-out fill-mode-both sm:text-base">
               <span className="flex items-center gap-1 font-semibold text-foreground">
                 <Star className="size-4 fill-yellow-400 text-yellow-400" />
                 {formatRating(featured.vote_average)}
               </span>
               <span>{formatJalaliYear(featured.release_date)}</span>
+              {featuredGenres.map((genre) => (
+                <span
+                  key={genre.id}
+                  className="rounded border border-white/25 px-2 py-0.5 text-xs text-foreground"
+                >
+                  {genre.name}
+                </span>
+              ))}
             </div>
             <p className="line-clamp-3 max-w-xl text-sm text-muted-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 duration-700 delay-300 ease-out fill-mode-both sm:text-base">
               {featured.overview}
@@ -92,9 +103,10 @@ export default async function HomePage() {
 
       <div className="flex flex-col gap-8 pt-4 sm:gap-10">
         <MovieRow
-          title="پرطرفدار"
+          title="۱۰ فیلم برتر امروز"
           movies={popular.results}
           seeAllHref="/genre/popular"
+          ranked
         />
         {rowGenres.map((genre, i) => (
           <MovieRow
