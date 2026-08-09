@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
 import { getMovieGenres, getMoviesByGenre } from "@/lib/tmdb";
+import { backdropUrl } from "@/lib/tmdb-image";
 import { GenreNav } from "@/components/genre-nav";
+import { GenreBanner } from "@/components/genre-banner";
 import { MovieCard } from "@/components/movie-card";
 import { PaginationControls } from "@/components/pagination-controls";
 
@@ -42,32 +44,42 @@ export default async function GenrePage({
   const buildHref = (targetPage: number) =>
     targetPage > 1 ? `${basePath}?page=${targetPage}` : basePath;
 
+  const bannerTitle = activeGenre
+    ? `ژانر ${activeGenre.name}`
+    : "فیلم‌های پرطرفدار";
+  const bannerBackdrop = backdropUrl(
+    movieResult.results[0]?.backdrop_path ?? null
+  );
+
   return (
-    <div className="mx-auto max-w-7xl px-4 pt-24 pb-10 sm:px-8">
-      <div className="mb-6 flex flex-col gap-4">
-        <h1 className="text-lg font-bold sm:text-xl">
-          {activeGenre ? `فیلم‌های ژانر ${activeGenre.name}` : "فیلم‌های پرطرفدار"}
-        </h1>
-        <GenreNav genres={genres} activeGenreId={genreId} />
-      </div>
-
-      {movieResult.results.length === 0 ? (
-        <p className="py-16 text-center text-muted-foreground">
-          فیلمی برای نمایش یافت نشد.
-        </p>
-      ) : (
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-          {movieResult.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
-      )}
-
-      <PaginationControls
-        page={movieResult.page}
-        totalPages={Math.min(movieResult.total_pages, 500)}
-        buildHref={buildHref}
+    <div>
+      <GenreBanner
+        title={bannerTitle}
+        movieCount={movieResult.total_results}
+        backdrop={bannerBackdrop}
       />
+
+      <div className="mx-auto max-w-7xl px-4 pt-6 pb-10 sm:px-8">
+        <GenreNav genres={genres} activeGenreId={genreId} />
+
+        {movieResult.results.length === 0 ? (
+          <p className="py-16 text-center text-muted-foreground">
+            فیلمی برای نمایش یافت نشد.
+          </p>
+        ) : (
+          <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+            {movieResult.results.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+        )}
+
+        <PaginationControls
+          page={movieResult.page}
+          totalPages={Math.min(movieResult.total_pages, 500)}
+          buildHref={buildHref}
+        />
+      </div>
     </div>
   );
 }
