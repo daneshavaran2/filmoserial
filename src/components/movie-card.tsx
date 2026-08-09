@@ -12,9 +12,9 @@ export function MovieCard({ movie }: { movie: Movie }) {
   return (
     <Link
       href={`/movie/${movie.id}`}
-      className="group block rounded-md transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.06] focus-visible:z-10 focus-visible:scale-[1.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
+      className="group block rounded-lg transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.06] focus-visible:z-10 focus-visible:scale-[1.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
     >
-      <div className="overflow-hidden rounded-md border border-transparent bg-card shadow-md transition-colors duration-300 group-hover:border-white/15 group-hover:shadow-xl group-hover:shadow-black/60 group-focus-visible:border-white/15 group-focus-visible:shadow-xl group-focus-visible:shadow-black/60">
+      <div className="overflow-hidden rounded-lg border border-transparent bg-card shadow-md transition-colors duration-300 group-hover:border-white/15 group-hover:shadow-xl group-hover:shadow-black/60 group-focus-visible:border-white/15 group-focus-visible:shadow-xl group-focus-visible:shadow-black/60">
         <div className="relative aspect-2/3 w-full overflow-hidden bg-muted">
           {poster ? (
             <Image

@@ -36,7 +36,7 @@ export function MovieRow({
         {seeAllHref && (
           <Link
             href={seeAllHref}
-            className="rounded-sm text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-2 focus-visible:outline-ring"
+            className="rounded-sm text-xs font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-2 focus-visible:outline-ring"
           >
             مشاهده همه
           </Link>
